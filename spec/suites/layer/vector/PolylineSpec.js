@@ -14,7 +14,7 @@ describe('Polyline', () => {
 		removeMapContainer(map, container);
 	});
 
-	describe('#initialize', () => {
+	describe('constructor', () => {
 		it('doesn\'t overwrite the given latlng array', () => {
 			const originalLatLngs = [
 				[1, 2],

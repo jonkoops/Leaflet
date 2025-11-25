@@ -1,0 +1,7 @@
+- Make sure documentation is correct
+- Add upgrade guide
+- More testing
+- Automatically calling `initialize()`?
+- Test that init hooks are automatically added
+- Deprecation message for `initialize()`
+- Add test for constructor with legacy class

@@ -14,7 +14,7 @@ describe('Polygon', () => {
 		removeMapContainer(map, container);
 	});
 
-	describe('#initialize', () => {
+	describe('constructor', () => {
 		it('should never be flat', () => {
 			const latLngs = [[1, 2], [3, 4]];
 
@@ -43,7 +43,7 @@ describe('Polygon', () => {
 			expect(poly.getLatLngs()).to.eql(poly._latlngs);
 		});
 
-		it('can be initialized with holes', () => {
+		it('can be constructed with holes', () => {
 			const originalLatLngs = [
 				[[0, 10], [10, 10], [10, 0]], // external ring
 				[[2, 3], [2, 4], [3, 4]] // hole
@@ -58,7 +58,7 @@ describe('Polygon', () => {
 			expect(poly.getLatLngs()).to.eql(poly._latlngs);
 		});
 
-		it('can be initialized with multi including hole', () => {
+		it('can be constructed with multi including hole', () => {
 			const latLngs = [
 				[[[10, 20], [30, 40], [50, 60]]],
 				[[[0, 10], [10, 10], [10, 0]], [[2, 3], [2, 4], [3, 4]]]

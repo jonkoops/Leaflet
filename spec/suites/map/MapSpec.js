@@ -653,7 +653,7 @@ describe('Map', () => {
 			expect(map.getMaxZoom()).to.equal(15);
 		});
 
-		it('map\'s zoom is adjusted to layer\'s minZoom even if initialized with smaller value', () => {
+		it('map\'s zoom is adjusted to layer\'s minZoom even if constructed with a smaller value', () => {
 			removeMapContainer(map, container);
 			container = createContainer();
 			map = new Map(container, {zoom: 10});
@@ -663,7 +663,7 @@ describe('Map', () => {
 			expect(map.getZoom()).to.equal(15);
 		});
 
-		it('map\'s zoom is adjusted to layer\'s maxZoom even if initialized with larger value', () => {
+		it('map\'s zoom is adjusted to layer\'s maxZoom even if constructed with a larger value', () => {
 			removeMapContainer(map, container);
 			container = createContainer();
 			map = new Map(container, {zoom: 20});

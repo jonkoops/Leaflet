@@ -91,14 +91,8 @@ export const Class = withInitHooks(class Class {
 	// @function addInitHook(fn: Function): this
 	// Adds a [constructor hook](#class-constructor-hooks) to the class.
 
-	constructor(...args) {
+	constructor() {
 		Util.setOptions(this);
-
-		// call the constructor
-		if (this.initialize) {
-			console.warn('The \'initialize()\' method is deprecated, use a class constructor instead.');
-			this.initialize(...args);
-		}
 	}
 });
 

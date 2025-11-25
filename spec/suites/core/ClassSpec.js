@@ -8,23 +8,6 @@ describe('Class', () => {
 		expect(Object.hasOwn(instance, 'options')).to.be.true;
 		expect(instance.options).to.eql({});
 	});
-
-	it('calls \'initialize()\' automatically with constructor arguments', () => {
-		const spy = sinon.spy();
-		const warnSpy = sinon.spy(console, 'warn');
-
-		class TestClass extends Class {
-			initialize(...args) {
-				spy(...args);
-			}
-		}
-
-		new TestClass(1, 2, 3);
-		console.warn.restore();
-
-		expect(spy.calledWith(1, 2, 3)).to.be.true;
-		expect(warnSpy.calledWith('The \'initialize()\' method is deprecated, use a class constructor instead.')).to.be.true;
-	});
 });
 
 describe('Class#extend', () => {
@@ -57,46 +40,6 @@ describe('Class#extend', () => {
 		a.bar();
 
 		expect(method.called).to.be.true;
-	});
-
-	it('calls the correct parent initialize function', () => {
-		const initialize = sinon.spy();
-		const initializeDraw = sinon.spy();
-		const initializeEdit = sinon.spy();
-		const Toolbar = Class.extend({
-			initialize() {
-				initialize();
-			}
-		});
-		Toolbar.include(Evented.prototype);
-		const DrawToolbar = Toolbar.extend({
-			initialize(options) {
-				initializeDraw();
-				Toolbar.prototype.initialize.call(this, options);
-			}
-		});
-		const EditToolbar = Toolbar.extend({
-			initialize(options) {
-				initializeEdit();
-				Toolbar.prototype.initialize.call(this, options);
-			}
-		});
-
-		new Toolbar();
-		sinon.assert.calledOnce(initialize);
-		sinon.assert.notCalled(initializeDraw);
-		sinon.assert.notCalled(initializeEdit);
-		initialize.resetHistory();
-
-		new DrawToolbar();
-		sinon.assert.callOrder(initializeDraw, initialize);
-		sinon.assert.notCalled(initializeEdit);
-		initialize.resetHistory();
-		initializeDraw.resetHistory();
-
-		new EditToolbar();
-		sinon.assert.callOrder(initializeEdit, initialize);
-		sinon.assert.notCalled(initializeDraw);
 	});
 
 	it('inherits parent classes\' constructor & properties', () => {

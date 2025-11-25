@@ -14,7 +14,7 @@ describe('Rectangle', () => {
 		removeMapContainer(map, container);
 	});
 
-	describe('#initialize', () => {
+	describe('constructor', () => {
 		it('should never be flat', () => {
 			const latLngs = [[1, 2], [3, 4]];
 
@@ -44,7 +44,7 @@ describe('Rectangle', () => {
 			}).to.throw();
 		});
 
-		it('can be initialized with extending bounds', () => {
+		it('can be constructed with extending bounds', () => {
 			const originalLatLngs = [
 				[0, 10], [20, 30],
 				[40, 50], [60, 70] // extended bounds
