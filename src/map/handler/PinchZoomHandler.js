@@ -130,10 +130,10 @@ export class PinchZoomHandler extends Handler {
 // @section Handlers
 // @property pinchZoom: Handler
 // Pinch zoom handler.
-LeafletMap.addInitHook('addHandler', 'pinchZoom', PinchZoomHandler);
+LeafletMap._defaultSetup.push(function () { this.addHandler('pinchZoom', PinchZoomHandler); });
 
 // Deprecated - Backward compatibility touchZoom
-LeafletMap.addInitHook(function () {
+LeafletMap._defaultSetup.push(function () {
 	this.touchZoom = this.pinchZoom;
 
 	if (this.options.touchZoom !== undefined) {

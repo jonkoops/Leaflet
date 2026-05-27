@@ -135,7 +135,7 @@ LeafletMap.mergeOptions({
 	zoomControl: true
 });
 
-LeafletMap.addInitHook(function () {
+LeafletMap._defaultSetup.push(function () {
 	if (this.options.zoomControl) {
 		// @section Controls
 		// @property zoomControl: ZoomControl

@@ -52,4 +52,4 @@ export class DoubleClickZoomHandler extends Handler {
 //
 // @property doubleClickZoom: Handler
 // Double click zoom handler.
-LeafletMap.addInitHook('addHandler', 'doubleClickZoom', DoubleClickZoomHandler);
+LeafletMap._defaultSetup.push(function () { this.addHandler('doubleClickZoom', DoubleClickZoomHandler); });

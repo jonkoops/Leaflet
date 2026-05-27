@@ -182,4 +182,4 @@ export class KeyboardHandler extends Handler {
 // @section Handlers
 // @property keyboard: Handler
 // Keyboard navigation handler.
-LeafletMap.addInitHook('addHandler', 'keyboard', KeyboardHandler);
+LeafletMap._defaultSetup.push(function () { this.addHandler('keyboard', KeyboardHandler); });

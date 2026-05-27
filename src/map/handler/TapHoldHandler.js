@@ -101,4 +101,4 @@ export class TapHoldHandler extends Handler {
 // @section Handlers
 // @property tapHold: Handler
 // Long tap handler to simulate `contextmenu` event (useful in mobile Safari).
-LeafletMap.addInitHook('addHandler', 'tapHold', TapHoldHandler);
+LeafletMap._defaultSetup.push(function () { this.addHandler('tapHold', TapHoldHandler); });

@@ -40,7 +40,7 @@ export default [
 			'prefer-exponentiation-operator': 'error',
 			'prefer-object-has-own': 'error',
 
-			'no-invalid-this': 'off', // used a lot by functions passed to addInitHook
+			'no-invalid-this': 'off', // used a lot by functions passed to LeafletMap._defaultSetup and include()
 			'e18e/prefer-array-at': 'off', // Safari 15.4+, pretty high baseline
 		}
 	},

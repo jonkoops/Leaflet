@@ -52,13 +52,13 @@ title: Tilt Handler Example
 		}
 	}
 	
-	Map.addInitHook('addHandler', 'tilt', TiltHandler);
-
 	const map = new LeafletMap('map', {
 		center: [0, 0],
-		zoom: 1,
-		tilt: true
+		zoom: 1
 	});
+
+	map.addHandler('tilt', TiltHandler);
+	map.tilt.enable();
 
 	const osm = new TileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
 		maxZoom: 19,

@@ -50,6 +50,8 @@ import * as PointerEvents from '../dom/DomEvent.PointerEvents.js';
 // and optionally an object literal with `Map options`.
 export class LeafletMap extends Evented {
 
+	static _defaultSetup = [];
+
 	static {
 		this.setDefaultOptions({
 			// @section Map State Options
@@ -168,7 +170,9 @@ export class LeafletMap extends Evented {
 			this.setView(new LatLng(options.center), options.zoom, {reset: true});
 		}
 
-		this.callInitHooks();
+		for (const fn of LeafletMap._defaultSetup) {
+			fn.call(this);
+		}
 
 		this._zoomAnimated = this.options.zoomAnimation;
 

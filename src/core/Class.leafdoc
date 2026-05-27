@@ -3,7 +3,7 @@
 
 Class powers the OOP facilities of Leaflet and is used to create almost all of the Leaflet classes documented here.
 
-It implements a simple classical inheritance model using JavaScript's standard `extends` keyword, and introduces several special properties for convenient code organization — options and init hooks.
+It implements a simple classical inheritance model using JavaScript's standard `extends` keyword, and introduces several special properties for convenient code organization — options and mixins.
 
 
 @example
@@ -105,21 +105,3 @@ const a = new MyClass();
 a.foo();
 ```
 
-
-@section Constructor hooks
-@example
-
-If you're a plugin developer, you often need to add additional initialization code to existing classes (e.g. editing hooks for `Polyline`). Leaflet comes with a way to do it easily using the `addInitHook` method:
-
-```js
-MyClass.addInitHook(() => {
-    // ... do something in constructor additionally
-    // e.g. add event listeners, set custom properties etc.
-});
-```
-
-You can also use the following shortcut when you just need to make one additional method call:
-
-```js
-MyClass.addInitHook('methodName', arg1, arg2, …);
-```

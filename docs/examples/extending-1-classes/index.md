@@ -22,7 +22,6 @@ From a technical point of view, Leaflet can be extended in different ways:
 	* Handlers are invisible and interpret browser events
 	* Controls are fixed interface elements
 * Including more, or replacing functionality (methods, fields) of an existing class with `Class.include()`
-* Using `Class.addInitHook()` to run additional constructor code.
 
 ## Extending Leaflet Classes
 
@@ -128,52 +127,3 @@ console.log(instance.incrementCount()); // Outputs "2"
 ```
 
 Note: Use `.include()` sparingly, as modifying base classes can have unexpected side effects. As a general rule of thumb, try to extend existing classes instead.
-
-### Initialization hooks
-
-Use `addInitHook()` to run code after `initialize()` completes. This is useful for setup that depends on state from the class being modified (e.g. using `.include()`):
-
-```js
-class MyBox extends Class {
-	static {
-		this.setDefaultOptions({
-			width: 1,
-			height: 1
-		});
-	}
-}
-
-MyBox.addInitHook(function() {
-	this._area = this.options.width * this.options.height;
-});
-
-MyBox.include({
-	getArea() {
-		return this._area;
-	}
-});
-
-const box = new MyBox({width: 5, height: 10});
-console.log(box.getArea()); // Outputs "50"
-```
-
-`addInitHook()` can also call a named method with arguments:
-
-```js
-class MyCube extends MyBox {
-	static {
-		this.setDefaultOptions({
-			depth: 1
-		});
-	}
-
-	_calculateVolume(multiplier/*, arg2, arg3. etc. */) {
-		this._volume = this.options.width * this.options.height * this.options.depth * multiplier;
-	}
-}
-
-MyCube.addInitHook('_calculateVolume', 1/*, arg2, arg3. etc. */);
-
-const cube = new MyCube({width: 2, height: 3, depth: 4});
-console.log(cube._volume); // Outputs "24"
-```

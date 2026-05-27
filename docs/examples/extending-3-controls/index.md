@@ -48,11 +48,7 @@ class TiltHandler extends Handler {
 }
 ```
 
-The handler can be attached to the map using `map.addHandler('tilt', TiltHandler)` - this will store an instance of `TiltHandler` as `map.tilt`. However, it's more usual to attach handlers to all maps with the `addInitHook` syntax:
-
-	Map.addInitHook('addHandler', 'tilt', TiltHandler);
-
-Our handler can now be enabled by running `map.tilt.enable()` and disabled by `map.tilt.disable()`
+The handler can be attached to the map using `map.addHandler('tilt', TiltHandler)` - this will store an instance of `TiltHandler` as `map.tilt`. It can then be enabled by running `map.tilt.enable()` and disabled by `map.tilt.disable()`.
 
 Moreover, if the map has a property named the same as the handler, then that handler will be enabled by default if that options is `true`, so this will enable our handler by default:
 
